@@ -14,4 +14,6 @@ define('NV_IS_FILE_ADMIN', true);
 
 $allow_func = array('main', 'config', 'logs');
 
-define('NV_PREFIXLANG', $db_config['prefix'] . '_' . $lang . '_' . $module_data);
+if (!defined('NV_PREFIXLANG')) {
+    define('NV_PREFIXLANG', $db_config['prefix'] . '_' . NV_LANG_DATA . '_' . $module_data);
+}
