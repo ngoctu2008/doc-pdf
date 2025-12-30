@@ -23,7 +23,7 @@ if ($nv_Request->isset_request('cleanup', 'post')) {
 $sql = "SELECT * FROM " . NV_PREFIXLANG . "_logs ORDER BY created_at DESC LIMIT 50";
 $result = $db->query($sql);
 
-$xtpl = new XTemplate('logs.tpl', NV_ROOTDIR . '/themes/' . $global_config['module_theme'] . '/modules/' . $module_file);
+$xtpl = new XTemplate('logs.tpl', NV_ROOTDIR . '/themes/' . $global_config['admin_theme'] . '/modules/' . $module_file);
 $xtpl->assign('LANG', $lang_module);
 $xtpl->assign('NV_BASE_ADMINURL', NV_BASE_ADMINURL);
 $xtpl->assign('NV_NAME_VARIABLE', NV_NAME_VARIABLE);
