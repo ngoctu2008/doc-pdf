@@ -1,0 +1,9 @@
+{
+    "name": "nukeviet/doc-pdf",
+    "description": "PDF Manipulation Module for NukeViet",
+    "type": "nukeviet-module",
+    "require": {
+        "google/apiclient": "^2.15",
+        "setasign/fpdi": "^2.3"
+    }
+}

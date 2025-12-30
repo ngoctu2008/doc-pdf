@@ -1,0 +1,6 @@
+vendor/
+modules/doc-pdf/vendor/
+.idea/
+.vscode/
+*.log
+*.zip
