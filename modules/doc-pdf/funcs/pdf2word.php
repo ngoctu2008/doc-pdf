@@ -10,7 +10,18 @@
 
 if (!defined('NV_IS_MOD_DOCPDF')) die('Stop!!!');
 
-require_once NV_ROOTDIR . '/modules/' . $module_file . '/vendor/autoload.php';
+$autoload_path = NV_ROOTDIR . '/modules/' . $module_file . '/vendor/autoload.php';
+if (!file_exists($autoload_path)) {
+    $contents = '<div class="alert alert-danger">
+        <strong>Module Error:</strong> Missing dependencies.<br>
+        Please run <code>composer install</code> in <code>modules/' . $module_file . '</code> directory to install required libraries (Google API Client, FPDI).
+    </div>';
+    include NV_ROOTDIR . '/includes/header.php';
+    echo nv_site_theme($contents);
+    include NV_ROOTDIR . '/includes/footer.php';
+    die();
+}
+require_once $autoload_path;
 require_once NV_ROOTDIR . '/modules/' . $module_file . '/includes/GoogleDriveDriver.php';
 
 use NukeViet\Module\DocPdf\GoogleDriveDriver;
