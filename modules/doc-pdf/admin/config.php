@@ -20,7 +20,7 @@ if ($nv_Request->isset_request('save', 'post')) {
     $config_data['tmp_retention_time'] = $nv_Request->get_int('tmp_retention_time', 'post', 3600);
 
     foreach ($config_data as $config_name => $config_value) {
-        $db->query("REPLACE INTO " . NV_PREFIXLANG . "_config (config_name, config_value) VALUES (" . $db->quote($config_name) . ", " . $db->quote($config_value) . ")");
+        $db->query("REPLACE INTO " . NV_PREFIXLANG . "_" . $module_data . "_config (config_name, config_value) VALUES (" . $db->quote($config_name) . ", " . $db->quote($config_value) . ")");
     }
 
     $nv_Cache->delMod($module_name);
@@ -29,7 +29,7 @@ if ($nv_Request->isset_request('save', 'post')) {
 }
 
 // Fetch current config
-$sql = "SELECT config_name, config_value FROM " . NV_PREFIXLANG . "_config";
+$sql = "SELECT config_name, config_value FROM " . NV_PREFIXLANG . "_" . $module_data . "_config";
 $result = $db->query($sql);
 $array_config = array();
 while ($row = $result->fetch()) {

@@ -47,7 +47,7 @@ if ($nv_Request->isset_request('submit', 'post')) {
              if (move_uploaded_file($_FILES['word_file']['tmp_name'], $target)) {
 
                  // Get Google Config
-                 $sql = "SELECT config_value FROM " . NV_PREFIXLANG . "_config WHERE config_name='google_service_account_json'";
+                 $sql = "SELECT config_value FROM " . NV_PREFIXLANG . "_" . $module_data . "_config WHERE config_name='google_service_account_json'";
                  $row = $db->query($sql)->fetch();
                  $jsonAuth = $row['config_value'];
 
@@ -57,7 +57,7 @@ if ($nv_Request->isset_request('submit', 'post')) {
                          $output = $driver->convertToPdf($target);
 
                          // Log
-                        $db->query("INSERT INTO " . NV_PREFIXLANG . "_logs (userid, action, input_file, output_file, file_size, created_at, status, ip) VALUES (
+                        $db->query("INSERT INTO " . NV_PREFIXLANG . "_" . $module_data . "_logs (userid, action, input_file, output_file, file_size, created_at, status, ip) VALUES (
                             " . $user_info['userid'] . ",
                             'word2pdf',
                             '" . $name . "',
@@ -74,7 +74,7 @@ if ($nv_Request->isset_request('submit', 'post')) {
                      } catch (Exception $e) {
                          $error = "Conversion failed: " . $e->getMessage();
                          // Log Error
-                         $db->query("INSERT INTO " . NV_PREFIXLANG . "_logs (userid, action, input_file, output_file, file_size, created_at, status, ip) VALUES (
+                         $db->query("INSERT INTO " . NV_PREFIXLANG . "_" . $module_data . "_logs (userid, action, input_file, output_file, file_size, created_at, status, ip) VALUES (
                             " . $user_info['userid'] . ",
                             'word2pdf',
                             '" . $name . "',

@@ -84,7 +84,7 @@ if ($nv_Request->isset_request('submit_split', 'post')) {
             }
 
              // Log
-            $db->query("INSERT INTO " . NV_PREFIXLANG . "_logs (userid, action, input_file, output_file, file_size, created_at, status, ip) VALUES (
+            $db->query("INSERT INTO " . NV_PREFIXLANG . "_" . $module_data . "_logs (userid, action, input_file, output_file, file_size, created_at, status, ip) VALUES (
                 " . $user_info['userid'] . ",
                 'split',
                 '" . basename($real_path) . "',

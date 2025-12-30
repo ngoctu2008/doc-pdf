@@ -14,10 +14,10 @@ $page_title = $lang_module['main'];
 
 // Simple stats
 $stats = array();
-$stats['pdf2word'] = $db->query("SELECT COUNT(*) FROM " . NV_PREFIXLANG . "_logs WHERE action='pdf2word'")->fetchColumn();
-$stats['word2pdf'] = $db->query("SELECT COUNT(*) FROM " . NV_PREFIXLANG . "_logs WHERE action='word2pdf'")->fetchColumn();
-$stats['merge'] = $db->query("SELECT COUNT(*) FROM " . NV_PREFIXLANG . "_logs WHERE action='merge'")->fetchColumn();
-$stats['split'] = $db->query("SELECT COUNT(*) FROM " . NV_PREFIXLANG . "_logs WHERE action='split'")->fetchColumn();
+$stats['pdf2word'] = $db->query("SELECT COUNT(*) FROM " . NV_PREFIXLANG . "_" . $module_data . "_logs WHERE action='pdf2word'")->fetchColumn();
+$stats['word2pdf'] = $db->query("SELECT COUNT(*) FROM " . NV_PREFIXLANG . "_" . $module_data . "_logs WHERE action='word2pdf'")->fetchColumn();
+$stats['merge'] = $db->query("SELECT COUNT(*) FROM " . NV_PREFIXLANG . "_" . $module_data . "_logs WHERE action='merge'")->fetchColumn();
+$stats['split'] = $db->query("SELECT COUNT(*) FROM " . NV_PREFIXLANG . "_" . $module_data . "_logs WHERE action='split'")->fetchColumn();
 
 $xtpl = new XTemplate('main.tpl', NV_ROOTDIR . '/themes/' . $global_config['admin_theme'] . '/modules/' . $module_file);
 $xtpl->assign('LANG', $lang_module);

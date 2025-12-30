@@ -14,13 +14,13 @@ $page_title = $lang_module['logs'];
 
 // Cleanup action
 if ($nv_Request->isset_request('cleanup', 'post')) {
-    $db->query("DELETE FROM " . NV_PREFIXLANG . "_logs");
+    $db->query("DELETE FROM " . NV_PREFIXLANG . "_" . $module_data . "_logs");
     $nv_Cache->delMod($module_name);
     Header('Location: ' . NV_BASE_ADMINURL . 'index.php?' . NV_LANG_VARIABLE . '=' . $lang . '&' . NV_NAME_VARIABLE . '=' . $module_name . '&' . NV_OP_VARIABLE . '=logs');
     die();
 }
 
-$sql = "SELECT * FROM " . NV_PREFIXLANG . "_logs ORDER BY created_at DESC LIMIT 50";
+$sql = "SELECT * FROM " . NV_PREFIXLANG . "_" . $module_data . "_logs ORDER BY created_at DESC LIMIT 50";
 $result = $db->query($sql);
 
 $xtpl = new XTemplate('logs.tpl', NV_ROOTDIR . '/themes/' . $global_config['admin_theme'] . '/modules/' . $module_file);

@@ -13,7 +13,3 @@ if (!defined('NV_ADMIN') or !defined('NV_MAINFILE') or !defined('NV_IS_MODADMIN'
 define('NV_IS_FILE_ADMIN', true);
 
 $allow_func = array('main', 'config', 'logs');
-
-if (!defined('NV_PREFIXLANG')) {
-    define('NV_PREFIXLANG', $db_config['prefix'] . '_' . NV_LANG_DATA . '_' . $module_file);
-}
